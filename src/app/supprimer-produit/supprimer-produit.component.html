@@ -1,0 +1,47 @@
+
+
+<h1 class="text-center" style="margin-top: 20px;"> Modifier/Supprimer produits</h1>
+
+<section class="shopping-cart spad">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="cart-table">
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>id</th>
+                              <th>Image</th>
+                              <th class="p-name">Nom produit</th>
+                              <th>Prix</th>
+                              <th>Quantité</th>
+                              <th>Gérer</th>
+                              
+                          </tr>
+                      </thead>
+                      <tbody>
+                         
+                          <tr *ngFor="let m of list">
+                               <th>{{m.id}}</th>
+                              <th class="cart-pic"> {{m.photo}}</th>
+                              <th >{{m.nom_produit}}</th>
+                              <th>{{m.prix}}</th>
+                              <th>{{m.quantite}}</th>
+                            <th><i class="fas fa-trash-alt" style="margin-right: 20px;" ></i> 
+                              <i class="fas fa-wrench"></i></th>
+                          </tr>
+                         
+                      </tbody>
+                  </table>
+                  
+              </div>
+           
+          </div>
+          <div class="col-lg-4 offset-lg-4">
+            <div class="proceed-checkout">
+                <a  class="proceed-btn"  >VALIDER</a>
+            </div>
+        </div>
+      </div>
+  </div>
+</section>

@@ -1,0 +1,77 @@
+
+           
+            
+              
+                  <!-- form d'ajout -->
+                  <div class="row">
+                   
+                    <div class="col-lg-10  offset-lg-1">
+                      <div class="p-5">
+                        <div class="text-center">
+                          <h1 class="h4 text-gray-900 mb-4">Ajouter Produit </h1>
+                        </div>
+                        <form class="user" [formGroup]="ajoutForm" (ngSubmit)="onSubmit()">
+                         
+                          <div class="form-group">
+                            <input type="text" class="form-control form-control-user" id="nom" placeholder="Nom produit" [(ngModel)]="nom" formControlName="nom"  [ngClass]="{ 'is-invalid': submitted && f.nom.errors }">
+                            <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                              <div *ngIf="f.nom.errors.required">Nom produit obligatoire</div>
+                          </div>
+                          </div>
+                 
+                          <div class="form-group">
+                            <input type="number" class="form-control form-control-user" id="prix" placeholder="Prix" [(ngModel)]="prix" formControlName="prix"  [ngClass]="{ 'is-invalid': submitted && f.prix.errors }">
+                            <div *ngIf="submitted && f.prix.errors" class="invalid-feedback">
+                              <div *ngIf="f.prix.errors.required">prix obligatoire</div>
+                          </div>
+                          </div>
+                          <div class="form-group">
+                            
+                            <select class="form-control  form-control-user" placeholder="Catégorie" formControlName="categorie" [(ngModel)]="categorie"  [ngClass]="{ 'is-invalid': submitted && f.categorie.errors }" style="border-radius: 20px; height: 50px;">
+                                <option value=""></option>
+                                <option value="Vetements">Vetements</option>
+                                <option value="Bébés">Bébés</option>
+                                <option value="Beauté">Beauté</option>
+                                <option value="Alimentations">Alimentations</option>
+                                
+                            </select>
+                            <div *ngIf="submitted && f.qt.errors" class="invalid-feedback">
+                              <div *ngIf="f.qt.errors.required">Categorie obligatoire</div>
+                             
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <input type="qt" class="form-control form-control-user" id="qt" placeholder="Quantité" [(ngModel)]="qt" formControlName="qt"  [ngClass]="{ 'is-invalid': submitted && f.qt.errors }">
+                                  <div *ngIf="submitted && f.qt.errors" class="invalid-feedback">
+                                    <div *ngIf="f.qt.errors.required">Quantité obligatoire</div>
+                                   
+                                        </div>
+                          </div>
+                          <div class="form-group">
+                            <input type="file" value="ajouter photo" id="photo"  [(ngModel)]="photo" formControlName="photo"  [ngClass]="{ 'is-invalid': submitted && f.photo.errors }">
+                            <div *ngIf="submitted && f.photo.errors" class="invalid-feedback">
+                              <div *ngIf="f.qt.errors.required">photo obligatoire</div>
+                              
+                                  </div>
+                                </div>
+                          
+                          <a   class="btn btn-primary btn-user btn-block" (click)="onSubmit()">
+                           Ajouter produit
+                          </a>
+                         
+                         
+                        </form>
+                        <hr>
+                        
+                        
+                      </div>
+                    </div>
+                  </div>
+        
+             
+       
+        
+          
+     
+         
+         
