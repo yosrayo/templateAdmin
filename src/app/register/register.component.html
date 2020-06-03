@@ -1,86 +1,89 @@
-<body>
-    <div class="container" >
-      <div class="row justify-content-center " >
-        <div class="col-xl-9 col-lg-12 col-md-9">
-          <div class="jumbotron jumbotron-fluid shadow-lg   rounded" style="background-color: rgba(128, 0, 128, 0.596); margin-top: 100px; box-shadow: black; " >
-        <div class="card-body p-0">
-          <!-- Nested Row within Card Body -->
-          <div class="row">
-           
-            <div class="col-lg-10  offset-lg-1">
-              <div class="p-5">
-                <div class="text-center">
-                  <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+<img src="assets\img\p.jpg" alt="" style="height: 50px;">
+<div class="container" >
+  <div class="row justify-content-center " >
+    <div class="col-xl-9 col-lg-12 col-md-9">
+      <div class="jumbotron jumbotron-fluid shadow-lg   rounded" style="background-color: white;  box-shadow: black; " >
+    <div class="card-body p-0">
+      <!-- Nested Row within Card Body -->
+      <div class="row">
+       
+        <div class="col-lg-10  offset-lg-1">
+          <div class="p-5">
+            <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Créer une Compte</h1>
+            </div>
+            <form class="user" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input type="text" class="form-control form-control-user" id="nom" placeholder="Nom"  [(ngModel)]="firstName" formControlName="firstName"  [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" style="border-color: black;">
+                  <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">Nom est obligatoire</div>
                 </div>
-                <form class="user" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                  <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                      <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name"  [(ngModel)]="firstName" formControlName="firstName"  [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
-                      <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
-                    </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name" [(ngModel)]="lastName"  formControlName="lastName"  [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
-                      <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-                    </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="address" placeholder="address" [(ngModel)]="address" formControlName="address"  [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
-                    <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
-                      <div *ngIf="f.address.errors.required">address is required</div>
-                  </div>
-                  </div>
-                  <div class="form-group">
-                    <input type="number" class="form-control form-control-user" id="phone" placeholder="phone number"[(ngModel)]="phone" formControlName="phone"  [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
-                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                      <div *ngIf="f.phone.errors.required">Phone number is required</div>
-                  </div>
-                  </div>
-                  <div class="form-group">
-                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address" [(ngModel)]="email" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                      <div *ngIf="f.email.errors.required">Email is required</div>
-                      <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-                          </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" [(ngModel)]="password" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-                      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Password is required</div>
-                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-                            </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password"  [(ngModel)]="confirmPassword" formControlName="confirmPassword"  [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
-                      <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-                        <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
-                        <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
-                    </div>
-                    </div>
-                  </div>
-                  <a   class="btn btn-primary btn-user btn-block" (click)="onSubmit()">
-                    Register Account
-                  </a>
-                 
-                 
-                </form>
-                <hr>
-                
-                <div class="text-center">
-                  <a class="small" [routerLink]="['/login']" routerLinkActive="router-link-active" >Already have an account? Login!</a>
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control form-control-user" id="prenom" placeholder="Prénom" [(ngModel)]="lastName"  formControlName="lastName"  [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" style="border-color: black;">
+                  <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastName.errors.required">Prenom est obligatoire</div>
+                </div>
                 </div>
               </div>
+              <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="adresse" placeholder="Adresse" [(ngModel)]="address" formControlName="address"  [ngClass]="{ 'is-invalid': submitted && f.address.errors }" style="border-color: black;">
+                <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                  <div *ngIf="f.address.errors.required">adresse est obligatoire</div>
+              </div>
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control form-control-user" id="telephone" placeholder="Telephone"[(ngModel)]="phone" formControlName="phone"  [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" style="border-color: black;">
+                <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                  <div *ngIf="f.phone.errors.required">telephone est obligatoire</div>
+              </div>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control form-control-user" id="email" placeholder="Adresse Email " [(ngModel)]="email" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" style="border-color: black;">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email est obligatoire</div>
+                  <div *ngIf="f.email.errors.email">adresse Email invalde</div>
+                      </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input type="password" class="form-control form-control-user" id="mdp" placeholder="Mot de passe" [(ngModel)]="password" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" style="border-color: black;">
+                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">mot de passe est obligatoire</div>
+                    <div *ngIf="f.password.errors.minlength">
+                        Le mot de passe doit être au moins de 6 caractères</div>
+                        </div>
+                </div>
+                <div class="col-sm-6">
+                  <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Confirmer mot de passe"  [(ngModel)]="confirmPassword" formControlName="confirmPassword"  [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" style="border-color: black;">
+                  <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                    <div *ngIf="f.confirmPassword.errors.required">Confirmation de mot de passse est obligatoire</div>
+                    <div *ngIf="f.confirmPassword.errors.mustMatch">
+                        Les mots de passe doivent identiques</div>
+                </div>
+                </div>
+              </div>
+              <a   class="btn btn-primary btn-user btn-block" (click)="onSubmit()"  style="background-color: #e7ab3c; border-color: #e7ab3c;">
+              Enregistrer
+              </a>
+              
+             
+            </form>
+            <hr>
+            
+            <div class="text-center">
+              <a class="small" [routerLink]="['/login']" routerLinkActive="router-link-active" style="color: black;" >Vous avez déjà une compte?Login</a>
             </div>
           </div>
         </div>
       </div>
-      </div>
-  </div>
     </div>
+  </div>
+  </div>
+</div>
+</div>
+
   
-  </body>
+  
  

@@ -2,48 +2,66 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../classes/user';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user: User;
+ 
   loginForm: FormGroup;
   ReactiveFormModul
   submitted = false;
-  
-  constructor(private router: Router , private formBuilder: FormBuilder) { }
+  user: User;
+  users:User[];
+  b=false;
+  constructor(private router: Router  ,private userService:UserService) { }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-     
-  });
-  
- 
     this.user= new User();
+    this.getUsers();
+  }
+  
+  getUsers()
+  {
+    this.userService.getUsers().subscribe(users => this.users = users);
+    console.log(this.users);
   }
   get f() { return this.loginForm.controls; }
+  
+  
+  
   connexion()
+
   {
-    this.submitted = true;
    
-     
-    if((this.loginForm.invalid)||(this.user.email=="admin@gmail.com")||(this.user.mdp=="admin"))
-    {
-     
-window.location.replace("accueilAdmin");
+for(let us of this.users)
+{
+  console.log("loop");
+  if((this.user.email==us.email)&&(this.user.mdp==us.mdp))
+ { 
+this.b=true;
+  
 
 
-    } else
-    {
-      alert("compte non reconnue!");
-      
-    }
+window.location.replace("livreur");
+//localStorage.setItem("name","user");
+
+ }
+
+}
     
+  
+    if(!this.b)
+    {
+      alert("compte non reconnu!");
+    }
+  
+}
+
+
+  
   }
  
-}
+

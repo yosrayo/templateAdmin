@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from 'src/app/_helpers/must-match.validator';
-import { User } from '../classes/user';
-import {UserService} from '../services/user.service';
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-ajout-livreur',
+  templateUrl: './ajout-livreur.component.html',
+  styleUrls: ['./ajout-livreur.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class AjoutLivreurComponent implements OnInit {
   phone : string;
   address: string;
   firstName: string;
@@ -16,15 +14,14 @@ export class RegisterComponent implements OnInit {
   email: string;
   password: string;
   confirmPassword: string;
-  registerForm: FormGroup;
+  ajoutForm: FormGroup;
   ReactiveFormModul
   submitted = false;
-  user:User;
-  users:User[];
-  constructor(private formBuilder: FormBuilder , private userService:UserService) { }
+  constructor(private formBuilder: FormBuilder) { }
 
+  
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
+    this.ajoutForm = this.formBuilder.group({
       phone: ['', Validators.required],
       city: ['', Validators.required],
       country: ['', Validators.required],
@@ -40,25 +37,15 @@ export class RegisterComponent implements OnInit {
   });
 
   }
-  get f() { return this.registerForm.controls; }
+  get f() { return this.ajoutForm.controls; }
 
     onSubmit() {
         this.submitted = true;
 
         // stop here if form is invalid
-        if (this.registerForm.invalid) {
+        if (this.ajoutForm.invalid) {
             return;
         }else {
-          this.user.nom=this.lastName;
-          this.user.prenom=this.firstName;
-          this.user.adresse=this.address;
-          this.user.telephone=this.phone;
-          this.user.email=this.email;
-          this.user.mdp=this.password;
-          this.user.zone="undefined";
-          this.user.grade="admin";
-this.userService.create(this.user as User).subscribe(user=>{this.users.push(user)});
-alert("ajouter avec succés");
           this.firstName = '';
           this.lastName = '';
           this.email = '';
@@ -67,13 +54,13 @@ alert("ajouter avec succés");
           this.password = '';
           this.confirmPassword = '';
           alert('SUCCESS!!');
-        console.log(this.registerForm.value);
+        console.log(this.ajoutForm.value);
         window.location.replace("login");
         }
     
     }
+reset(){
+  
+}
    
-   
-  }
-
-
+}

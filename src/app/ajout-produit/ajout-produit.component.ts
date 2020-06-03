@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Produit } from '../classes/produit';
-import {ProduitService} from '../services/produit.service'
+import {ProduitService} from '../services/produit.service';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-ajout-produit',
@@ -19,7 +20,7 @@ export class AjoutProduitComponent implements OnInit {
   produits:Produit[];
   submitted = false;
   ReactiveFormModul
-  constructor(private formBuilder: FormBuilder, private produitService:ProduitService){ }
+  constructor(private formBuilder: FormBuilder, private produitService:ProduitService , private httpClient: HttpClient){ }
 
   ngOnInit() {
     this.produit=new Produit();
@@ -33,6 +34,8 @@ export class AjoutProduitComponent implements OnInit {
       
   })
   }
+
+  
   get f() { return this.ajoutForm.controls; }
   onSubmit() {
     this.submitted = true;

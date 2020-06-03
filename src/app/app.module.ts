@@ -14,11 +14,23 @@ import { ForgetPassComponent } from './forget-pass/forget-pass.component';
 import { MessageComponent } from './message/message.component';
 import { AdminAccueilComponent } from './admin-accueil/admin-accueil.component';
 import { AgmCoreModule } from '@agm/core';
-import { GpsComponent } from './gps/gps.component';
+
 import { AjoutProduitComponent } from './ajout-produit/ajout-produit.component';
 import { SupprimerProduitComponent } from './supprimer-produit/supprimer-produit.component';
 import { CategorieComponent } from './categorie/categorie.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient , HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AjoutLivreurComponent } from './ajout-livreur/ajout-livreur.component';
+import { ModifierProfilLivComponent } from './modifier-profil-liv/modifier-profil-liv.component';
+
+import { CommandeLivComponent } from './commande-liv/commande-liv.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { SupLivreurComponent } from './sup-livreur/sup-livreur.component';
+import { SupClientComponent } from './sup-client/sup-client.component';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AuthoService } from './services/autho.service';
+import { EventService } from './services/event.service';
+import { AuthGuard } from './autho.guard';
+
 
 @NgModule({
   declarations: [
@@ -33,10 +45,17 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     ForgetPassComponent,
     MessageComponent,
     AdminAccueilComponent,
-    GpsComponent,
+   
     AjoutProduitComponent,
     SupprimerProduitComponent,
     CategorieComponent,
+    AjoutLivreurComponent,
+    ModifierProfilLivComponent,
+    
+    CommandeLivComponent,
+    AccueilComponent,
+    SupLivreurComponent,
+    SupClientComponent,
   
   ],
   imports: [
@@ -52,7 +71,12 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     
   
   ],
-  providers: [],
+  providers: [AuthoService, AuthGuard, EventService, 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

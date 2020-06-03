@@ -7,12 +7,19 @@ import { RegisterComponent } from './register/register.component';
 import { ForgetPassComponent } from './forget-pass/forget-pass.component';
 import { MessageComponent } from './message/message.component';
 import { AdminAccueilComponent } from './admin-accueil/admin-accueil.component';
-import { GpsComponent } from './gps/gps.component';
+
 import { AjoutProduitComponent } from './ajout-produit/ajout-produit.component';
 import { SupprimerProduitComponent } from './supprimer-produit/supprimer-produit.component';
 import { CategorieComponent } from './categorie/categorie.component';
+import { ModifierProfilLivComponent } from './modifier-profil-liv/modifier-profil-liv.component';
 
 import{ LoginComponent} from './login/login.component';
+import { AjoutLivreurComponent } from './ajout-livreur/ajout-livreur.component';
+
+import { CommandeLivComponent } from './commande-liv/commande-liv.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { SupClientComponent } from './sup-client/sup-client.component';
+import { SupLivreurComponent } from './sup-livreur/sup-livreur.component';
 
 
 
@@ -25,11 +32,17 @@ const routes: Routes = [
  {path: 'entete', component:EnteteComponent},
  {path: 'register', component:RegisterComponent},
  {path: 'forgetPass', component:ForgetPassComponent},
- {path: 'gps', component:GpsComponent},
+ {path: 'supClient', component:SupClientComponent},
  {path: 'ajoutproduit', component:AjoutProduitComponent},
  {path: 'supprimerproduit', component:SupprimerProduitComponent},
  {path: 'ajoutsupcategorie', component:CategorieComponent},
+ {path: 'modifierProfil', component:ModifierProfilLivComponent},
+ {path: 'ajoutLivreur', component:AjoutLivreurComponent},
+ {path: 'livCommande',
  
+  component:CommandeLivComponent},
+ {path: 'supLiv', component:SupLivreurComponent},
+ {path: 'accueil', component:AccueilComponent},
 ];
 
 

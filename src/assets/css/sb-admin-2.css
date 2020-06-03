@@ -6199,17 +6199,17 @@ a.close.disabled {
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #2653d4 !important;
+  background-color: #2653d4 ;
 }
 
 .bg-secondary {
-  background-color: #858796 !important;
+  background-color: #858796 !;
 }
 
 a.bg-secondary:hover, a.bg-secondary:focus,
 button.bg-secondary:hover,
 button.bg-secondary:focus {
-  background-color: #6b6d7d !important;
+  background-color: #6b6d7d ;
 }
 
 .bg-success {
@@ -6239,45 +6239,45 @@ button.bg-info:focus {
 a.bg-warning:hover, a.bg-warning:focus,
 button.bg-warning:hover,
 button.bg-warning:focus {
-  background-color: #f4b30d !important;
+  background-color: #f4b30d ;
 }
 
 .bg-danger {
-  background-color: #e74a3b !important;
+  background-color: #e74a3b;
 }
 
 a.bg-danger:hover, a.bg-danger:focus,
 button.bg-danger:hover,
 button.bg-danger:focus {
-  background-color: #d52a1a !important;
+  background-color: #d52a1a;
 }
 
 .bg-light {
-  background-color: #f8f9fc !important;
+  background-color: #f8f9fc ;
 }
 
 a.bg-light:hover, a.bg-light:focus,
 button.bg-light:hover,
 button.bg-light:focus {
-  background-color: #d4daed !important;
+  background-color: #d4daed ;
 }
 
 .bg-dark {
-  background-color: #5a5c69 !important;
+  background-color: #5a5c69 ;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
-  background-color: #42444e !important;
+  background-color: #42444e ;
 }
 
 .bg-white {
-  background-color: #fff !important;
+  background-color: #fff ;
 }
 
 .bg-transparent {
-  background-color: transparent !important;
+  background-color: transparent ;
 }
 
 .border {

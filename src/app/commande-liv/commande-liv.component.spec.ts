@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GpsComponent } from './gps.component';
+import { CommandeLivComponent } from './commande-liv.component';
 
-describe('GpsComponent', () => {
-  let component: GpsComponent;
-  let fixture: ComponentFixture<GpsComponent>;
+describe('CommandeLivComponent', () => {
+  let component: CommandeLivComponent;
+  let fixture: ComponentFixture<CommandeLivComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GpsComponent ]
+      declarations: [ CommandeLivComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GpsComponent);
+    fixture = TestBed.createComponent(CommandeLivComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

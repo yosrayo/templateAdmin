@@ -1,0 +1,46 @@
+
+
+<h1 class="text-center" style="margin-top: 20px;"> Supprimer Livreur</h1>
+
+<section class="shopping-cart spad">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="cart-table">
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>id</th>
+                              <th>Nom</th>
+                              <th>Prénon</th>
+                              <th>Adresse</th>
+                              <th>Supprimer</th>
+                              
+                          </tr>
+                      </thead>
+                      <tbody>
+                         
+                          <tr *ngFor="let m of list">
+                               <th>{{m.id}}</th>
+                              <th >{{m.nom}}</th>
+                              <th >{{m.prenom}}</th>
+                              <th>{{m.adresse}}</th>
+                            <th>
+                                <i class="fas fa-trash-alt"></i> 
+                            </tr>
+                         
+                      </tbody>
+                  </table>
+                  
+              </div>
+           
+          </div>
+          <div class="col-lg-4 offset-lg-4">
+            <div class="proceed-checkout">
+                <a  class="proceed-btn"  >VALIDER</a>
+            </div>
+        </div>
+      </div>
+  </div>
+</section>
+
