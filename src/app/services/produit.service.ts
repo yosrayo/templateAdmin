@@ -48,5 +48,11 @@ export class ProduitService {
   delete(_id: string) {
     return this.http.delete(this.ProduitsUrl + `/${_id}`);
   }
+  deleteProduit(_id: string) {
+    return this.http.delete(this.ProduitsUrl + `/${_id}`);
+  }
+  updatepark(emp) {
+    return this.http.put(this.ProduitsUrl + `/${emp._id}`, emp);
+  }
 
 }

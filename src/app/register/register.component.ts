@@ -19,15 +19,14 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   ReactiveFormModul
   submitted = false;
-  user:User;
+  user = [] as any;
   users:User[];
   constructor(private formBuilder: FormBuilder , private userService:UserService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       phone: ['', Validators.required],
-      city: ['', Validators.required],
-      country: ['', Validators.required],
+  
       address: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -42,37 +41,42 @@ export class RegisterComponent implements OnInit {
   }
   get f() { return this.registerForm.controls; }
 
-    onSubmit() {
-        this.submitted = true;
+  onSubmit() {
+    this.submitted = true;
 
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
-        }else {
-          this.user.nom=this.lastName;
-          this.user.prenom=this.firstName;
-          this.user.adresse=this.address;
-          this.user.telephone=this.phone;
-          this.user.email=this.email;
-          this.user.mdp=this.password;
-          this.user.zone="undefined";
-          this.user.grade="admin";
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+        return;
+    }else {
+      this.user.nom=this.lastName;
+      this.user.prenom=this.firstName;
+      this.user.adresse=this.address;
+      this.user.telephone=this.phone;
+      this.user.email=this.email;
+      this.user.mdp=this.password;
+      this.user.pays="undefined";
+      this.user.ville="undefined";
+      this.user.zone="undefined";
+      this.user.grade="useradmin";
 this.userService.create(this.user as User).subscribe(user=>{this.users.push(user)});
 alert("ajouter avec succés");
-          this.firstName = '';
-          this.lastName = '';
-          this.email = '';
-          this.address = '';
-          this.phone = '';
-          this.password = '';
-          this.confirmPassword = '';
-          alert('SUCCESS!!');
-        console.log(this.registerForm.value);
-        window.location.replace("login");
-        }
-    
+      this.firstName = '';
+      this.lastName = '';
+      this.email = '';
+     
+      this.address = '';
+      this.phone = '';
+      this.password = '';
+      this.confirmPassword = '';
+      //alert('SUCCESS!!');
+    console.log(this.registerForm.value);
+
+
+
+   window.location.replace("login");
     }
-   
+
+}
    
   }
 

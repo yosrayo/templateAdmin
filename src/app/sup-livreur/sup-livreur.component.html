@@ -26,7 +26,7 @@
                               <th >{{m.prenom}}</th>
                               <th>{{m.adresse}}</th>
                             <th>
-                                <i class="fas fa-trash-alt"></i> 
+                               <a  (click)="onDelete(m.id)" class="btn btn-danger" ><i class="fas fa-trash-alt"  ></i>supprimer </a> 
                             </tr>
                          
                       </tbody>
@@ -35,11 +35,7 @@
               </div>
            
           </div>
-          <div class="col-lg-4 offset-lg-4">
-            <div class="proceed-checkout">
-                <a  class="proceed-btn"  >VALIDER</a>
-            </div>
-        </div>
+        
       </div>
   </div>
 </section>

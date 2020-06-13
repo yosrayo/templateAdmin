@@ -12,8 +12,8 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 export class AjoutProduitComponent implements OnInit {
   nom : string;
   categorie : string;
-  prix: string;
-  qt: string;
+  prix: number;
+  qt: number;
   photo: string;
   ajoutForm: FormGroup;
   produit:Produit;
@@ -54,8 +54,8 @@ export class AjoutProduitComponent implements OnInit {
 this.produitService.create(this.produit as Produit).subscribe(produit=>{this.produits.push(produit)});
 alert("ajouter avec succés");
       this.nom = '';
-      this.prix = '';
-      this.qt = '';
+      this.prix = null;
+      this.qt = null;
       this.photo = '';
       this.categorie = '';
      

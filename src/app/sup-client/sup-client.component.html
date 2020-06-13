@@ -1,7 +1,16 @@
 
 
 <h1 class="text-center" style="margin-top: 20px;"> Supprimer Client</h1>
-
+<form class="d-none d-sm-inline-block form-inline  navbar-search" style=" margin-left: 100px; margin-top: 50px;">
+    <div class="input-group" >
+      <input type="text" class="form-control  border-5 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" style="border-color: black;">
+      <div class="input-group-append">
+        <button class="btn btn" type="button" style="background-color: #e7ab3c;" >
+          <i class="fas fa-search fa-sm"></i>
+        </button>
+      </div>
+    </div>
+  </form>
 <section class="shopping-cart spad">
   <div class="container">
       <div class="row">
@@ -25,8 +34,9 @@
                               <th >{{m.nom}}</th>
                               <th >{{m.prenom}}</th>
                               <th>{{m.adresse}}</th>
+                              
                             <th>
-                                <i class="fas fa-trash-alt"></i> 
+                              <a  (click)="onDelete(m.id)" class="btn btn-danger" ><i class="fas fa-trash-alt"  ></i>supprimer </a> 
                             </tr>
                          
                       </tbody>
@@ -35,11 +45,7 @@
               </div>
            
           </div>
-          <div class="col-lg-4 offset-lg-4">
-            <div class="proceed-checkout">
-                <a  class="proceed-btn"  >VALIDER</a>
-            </div>
-        </div>
+         
       </div>
   </div>
 </section>

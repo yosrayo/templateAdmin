@@ -19,4 +19,13 @@ export class SupClientComponent implements OnInit {
     });
     
   }
+  onDelete(_id: string) {
+    if (confirm('Voulez-vous vraiment supprimer cet enregistrement ?') === true) {
+      this.userService.deleteUser(_id).subscribe((res) => {
+        this.ngOnInit();
+      });
+    }
+  }
+
+
 }

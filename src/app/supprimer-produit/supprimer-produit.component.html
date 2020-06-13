@@ -1,47 +1,113 @@
 
-
-<h1 class="text-center" style="margin-top: 20px;"> Modifier/Supprimer produits</h1>
-
-<section class="shopping-cart spad">
-  <div class="container">
-      <div class="row">
-          <div class="col-lg-12">
-              <div class="cart-table">
-                  <table>
-                      <thead>
-                          <tr>
-                              <th>id</th>
-                              <th>Image</th>
-                              <th class="p-name">Nom produit</th>
-                              <th>Prix</th>
-                              <th>Quantité</th>
-                              <th>Gérer</th>
-                              
-                          </tr>
-                      </thead>
-                      <tbody>
-                         
-                          <tr *ngFor="let m of list">
-                               <th>{{m.id}}</th>
-                              <th class="cart-pic"> {{m.photo}}</th>
-                              <th >{{m.nom_produit}}</th>
-                              <th>{{m.prix}}</th>
-                              <th>{{m.quantite}}</th>
-                            <th><i class="fas fa-trash-alt" style="margin-right: 20px;" ></i> 
-                              <i class="fas fa-wrench"></i></th>
-                          </tr>
-                         
-                      </tbody>
-                  </table>
+    
+      <div class="container" >
+        <h3 class="text-center"><i class="far fa-edit"></i><u>Gérer Produit</u></h3>
+        <div class="messaging">
+              <div class="inbox_msg">
+                <div class="inbox_people">
+                  <div class="headind_srch" style="background-color: white;">
+                    <div class="recent_heading" >
+                      <h4 class="text-center" style="color: #e7ab3c">Modifier produit</h4>
+                    </div>
                   
+                  </div>
+                  <div class="inbox_chat" style="background-color: white;">
+                    <div class="container" >
+
+                      <form  class="form-group ">
+                          
+                          <div class="form-group">
+                            <label for="exampleInputEmail1" ><b>Nom produit</b></label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" 
+                              name="nom_produit" [(ngModel)]="nom_produit" >
+          
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1"><b>Prix</b></label>
+                            <input type="text" class="form-control" 
+                             name="prix"  [(ngModel)]="prix">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1" ><b>Quantité</b></label>
+                            <input type="text" class="form-control"  
+                            name="quantite" [(ngModel)]="quantite">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1" ><b>Photo</b></label><br>
+                            <input type="file"   name="photo" [(ngModel)]="photo"
+                             style="color: #e7ab3c ">
+                          </div>
+                        
+                          <div class="text-center">
+                            <button type="button" class="btn btn-warning" style="margin-right: 20px;  width: 150px;">Annuler</button>
+          
+                           <button type="button" class="btn btn-success" style=" width: 150px;">Valider</button>
+          
+                         
+                          </div>
+                        </form>
+                    </div>
+      
+                    
+                    
+                  </div>
+                </div>
+                <div class="mesgs" style="background-color: white" >
+                    <h3 style="color: #e7ab3c" class="text-center">Liste de produits</h3>
+                  <div class="msg_history">
+                    
+                    
+                        <div  >
+                            
+                          <table class="table">
+                              <thead>
+                                <tr>
+            
+                                  <th scope="col" style="color: darkgoldenrod;">photo</th>
+                                  <th scope="col" style="color: darkgoldenrod;">Nom</th>
+                                  <th scope="col" style="color: darkgoldenrod;">Prix</th>
+                                  <th scope="col" style="color: darkgoldenrod;">Quantité</th>
+                                  <th scope="col" style="color: darkgoldenrod;">Edite</th>
+                     
+                        
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let m of list" >
+                                  <th>{{m.photo}}</th>
+                                  <th>{{m. nom_produit}}</th>
+                                  <th>{{m.prix}}</th>
+                                  <th>{{m.quantite}}</th>
+                           
+                                  
+                                  <th>
+                                    <a class="action-btn" (click)="onDelete(m.id)">
+                                        <i class="fas fa-trash-alt" style="margin-right: 20px; color: rgb(184, 35, 35);" ></i>
+                                    </a>
+                                    <a class="action-btn" (click)="onEdit(m)">
+                                        <i class="fas fa-wrench" style="color: chocolate;"></i>
+                                    </a>
+                                    
+                                  </th>
+                        
+                                </tr>
+                        
+                              </tbody>
+                            </table>
+                        </div>
+                          
+                    
+                  </div>
+                </div>
               </div>
-           
-          </div>
-          <div class="col-lg-4 offset-lg-4">
-            <div class="proceed-checkout">
-                <a  class="proceed-btn"  >VALIDER</a>
-            </div>
-        </div>
-      </div>
-  </div>
-</section>
+              
+              
+            </div></div>
+
+    <!------ Include the above in your HEAD tag ---------->
+    
+    
+ 
+  
+  
+

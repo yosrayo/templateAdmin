@@ -50,4 +50,8 @@ export class UserService {
       catchError(this.handleError<User>('delete'))
     );
   }
+
+  deleteUser(_id: string) {
+    return this.http.delete(this.UsersUrl + `/${_id}`);
+  }
 }

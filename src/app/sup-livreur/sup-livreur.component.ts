@@ -9,14 +9,27 @@ import { User } from '../classes/user';
 export class SupLivreurComponent implements OnInit {
   list = [] as any ;
   user:User;
-  constructor(private userService : UserService) { }
+  constructor(private userService : UserService ) { }
 
   ngOnInit() {
    
     this.userService .getUsers().subscribe((res) => {
       this.list = res;
     });
-  
+    
   }
+  delete(user:User): void {
+    this.userService.delete(user).subscribe();
+    
 
+  }
+ 
+  onDelete(_id: string) {
+    if (confirm('Voulez-vous vraiment supprimer cet enregistrement ?') === true) {
+      this.userService.deleteUser(_id).subscribe((res) => {
+        this.ngOnInit();
+      });
+    }
+  }
+  
 }

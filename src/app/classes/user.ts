@@ -7,6 +7,8 @@ export class User {
     email:string;
     mdp: string;
     zone:string;
+    pays: string;
+    ville: string;
     grade:string;
 
 }

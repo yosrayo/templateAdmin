@@ -45,8 +45,8 @@ this.b=true;
   
 
 
-window.location.replace("livreur");
-//localStorage.setItem("name","user");
+window.location.replace("entete");
+localStorage.setItem("name","user");
 
  }
 
