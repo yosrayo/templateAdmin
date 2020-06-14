@@ -11,10 +11,12 @@ export class CategorieComponent implements OnInit {
   list = [] as any ;
   categorie:Categorie;
   nom_categorie:string;
+  categories:Categorie[] ;
+  c = [] as any;
   constructor( private categorieService: CategorieService) { }
 
   ngOnInit() {
-     
+   
     this.categorieService .getCategories().subscribe((res) => {
       this.list = res;
     });
@@ -34,4 +36,12 @@ export class CategorieComponent implements OnInit {
     
 
   }
+  ajout(){
+   
+    this.categorie.nom_categorie=this.nom_categorie;
+   
+    this.categorieService.create(this.categorie).subscribe(categorie=>{this.categories.push(categorie)}); 
+    alert("ajouter avec succés");
+    window.location.replace("");
+    }
 }

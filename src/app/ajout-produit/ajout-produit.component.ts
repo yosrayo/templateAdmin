@@ -16,7 +16,7 @@ export class AjoutProduitComponent implements OnInit {
   qt: number;
   photo: string;
   ajoutForm: FormGroup;
-  produit:Produit;
+  produit={}as any;
   produits:Produit[];
   submitted = false;
   ReactiveFormModul
