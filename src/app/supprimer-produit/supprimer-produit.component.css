@@ -12,6 +12,14 @@ img{ max-width:100%;}
   overflow: hidden;
 }
 .top_spac{ margin: 20px 0 0;}
+.image-preview {
+  height: 5rem;
+  margin: 1rem 0;
+}
+
+.image-preview img {
+  height: 50%;
+}
 
 h3 {
     margin-top: 50px;

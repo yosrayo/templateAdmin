@@ -1,4 +1,5 @@
-
+       
+ 
 <div id="wrapper" style="background-color: #e7ab3c;">
   
   <ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar" >
@@ -244,82 +245,161 @@
         </nav>
         <!-- End of Topbar -->
        
-      
+            
        
-      
+<div class="container-fluid">
+
+ 
+
+<div class="row">
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Gains (mensuels)</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">40DT</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Gains (annuels)</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">215DT</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
+            <div class="row no-gutters align-items-center">
+              <div class="col-auto">
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+              </div>
+              <div class="col">
+                <div class="progress progress-sm mr-2">
+                  <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pending Requests Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"> Requêtes en attente</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-comments fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
        
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
        
-<img src="assets\img\p.jpg" alt="" style="height: 50px;">
-                  <div class="row">
-                   
-                    <div class="col-lg-10  offset-lg-1">
-                      <div class="p-5">
-                        <div class="text-center">
-                          <h1 class="h4 text-gray-900 mb-4">Ajouter Produit </h1>
-                        </div>
-                        <form class="user" [formGroup]="ajoutForm" (ngSubmit)="onSubmit()">
-                         
-                          <div class="form-group">
-                            <input type="text" class="form-control form-control-user" id="nom" placeholder="Nom produit" [(ngModel)]="nom" formControlName="nom"  [ngClass]="{ 'is-invalid': submitted && f.nom.errors }">
-                            <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
-                              <div *ngIf="f.nom.errors.required">Nom produit obligatoire</div>
-                          </div>
-                          </div>
-                 
-                          <div class="form-group">
-                            <input type="number" class="form-control form-control-user" id="prix" placeholder="Prix" [(ngModel)]="prix" formControlName="prix"  [ngClass]="{ 'is-invalid': submitted && f.prix.errors }">
-                            <div *ngIf="submitted && f.prix.errors" class="invalid-feedback">
-                              <div *ngIf="f.prix.errors.required">prix obligatoire</div>
-                          </div>
-                          </div>
-                          <div class="form-group">
-                            
-                            <select class="form-control  form-control-user" placeholder="Catégorie" formControlName="categorie" [(ngModel)]="categorie"  [ngClass]="{ 'is-invalid': submitted && f.categorie.errors }" style="border-radius: 20px; height: 50px;">
-                                <option value=""></option>
-                                <option value="Vetements">Vetements</option>
-                                <option value="Bébés">Bébés</option>
-                                <option value="Beauté">Beauté</option>
-                                <option value="Alimentations">Alimentations</option>
-                                
-                            </select>
-                            <div *ngIf="submitted && f.qt.errors" class="invalid-feedback">
-                              <div *ngIf="f.qt.errors.required">Categorie obligatoire</div>
-                             
-                                  </div>
-                                </div>
-                                <div class="form-group">
-                                  <input type="qt" class="form-control form-control-user" id="qt" placeholder="Quantité" [(ngModel)]="qt" formControlName="qt"  [ngClass]="{ 'is-invalid': submitted && f.qt.errors }">
-                                  <div *ngIf="submitted && f.qt.errors" class="invalid-feedback">
-                                    <div *ngIf="f.qt.errors.required">Quantité obligatoire</div>
-                                   
-                                        </div>
-                          </div>
-                          <div class="form-group">
-                            
-                            <input type="file" name="image" (change)="selectImage($event)"[(ngModel)]="photo" formControlName="photo"  [ngClass]="{ 'is-invalid': submitted && f.photo.errors }" />
-                            <div *ngIf="submitted && f.photo.errors" class="invalid-feedback">
-                              <div *ngIf="f.qt.errors.required">photo obligatoire</div>
-                              
-                                  </div>
-                                </div>
-                          
-                          <a   class="btn  btn-user btn-block" (click)=" onSubmit()"  style="background-color: #e7ab3c;">
-                           Ajouter produit
-                          </a>
-                         
-                         
-                        </form>
-                        <hr>
-                        
-                        
-                      </div>
-                    </div>
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-center"><i class="fas fa-chart-bar"></i>Charts</h1>
+         
+
+          <!-- Content Row -->
+          <div class="row" style="margin-top: 20px;">
+
+            <div class="col-xl-8 col-lg-7">
+
+              
+              <div class="card shadow ">
+                <div class="card-header ">
+                  <h6 class="m-0 font-weight-bold ">Revenu</h6>
+                </div>
+                <div class="card-body">
+                  <div class="chart-bar" style="margin-bottom: 80px;">
+                    <canvas baseChart 
+                      [datasets]="barChartData"
+                        [labels]="barChartLabels"
+                      [options]="barChartOptions"
+                      [plugins]="barChartPlugins"
+                      [legend]="barChartLegend"
+                     [chartType]="barChartType">
+                  </canvas>
                   </div>
-        
-             
-       
-        
-          
-     
-         
-         
+                  </div>
+              </div>
+
+            </div>
+
+            <!-- Donut Chart -->
+            <div class="col-xl-4 col-lg-7">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3" >
+                  <h6 class="m-0 font-weight-bold ">Les produits le plus achetés </h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body " >
+                  <div class="chart-pie pt-4">
+                    <canvas baseChart 
+                   [data]="doughnutChartData"
+                  [labels]="doughnutChartLabels"
+                  [chartType]="doughnutChartType"  >
+                   </canvas>
+                  </div>
+                 </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+ 

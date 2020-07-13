@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder , private userService:UserService) { }
 
   ngOnInit() {
+    this.user=new User();
     this.registerForm = this.formBuilder.group({
       phone: ['', Validators.required],
   
@@ -45,9 +46,10 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.registerForm.invalid) {
-        return;
-    }else {
+    //if (this.registerForm.invalid) {
+        //return;
+   //}else {
+    if (this.registerForm){
       this.user.nom=this.lastName;
       this.user.prenom=this.firstName;
       this.user.adresse=this.address;
@@ -60,27 +62,25 @@ export class RegisterComponent implements OnInit {
       this.user.grade="admin";
 this.userService.create(this.user as User).subscribe(user=>{this.users.push(user)});
 alert("ajouter avec succés");
-      this.firstName = '';
+     /* this.firstName = '';
       this.lastName = '';
       this.email = '';
       this.address = '';
       this.phone = '';
       this.password = '';
-      this.confirmPassword = '';
+      this.confirmPassword = '';*/
       //alert('SUCCESS!!');
     console.log(this.registerForm.value);
-
+console.log('user',this.user)
 
 
    window.location.replace("login");
     }
 
 }
+//}
 
-onReset() {
-  this.submitted = false;
-  this.registerForm.reset();
-}
+
 
    
   }

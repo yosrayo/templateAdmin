@@ -35,6 +35,10 @@ export class UserService {
       catchError(this.handleError<User[]>('getUsers', []))
     );
   }
+  getUserGrade(grade:String){
+    return this.http.get('http://localhost:8081/user/grade'+'/'+grade)
+  }
+
   create(user: User): Observable<any> {
     return this.http.post<User>(this.UsersUrl, user, httpOptions).pipe(
       tap((newUser: User) => console.log(`added user w/ id=${newUser.id}`)),
@@ -54,4 +58,8 @@ export class UserService {
   deleteUser(_id: string) {
     return this.http.delete(this.UsersUrl + `/${_id}`);
   }
+  updateUser(emp) {
+    return this.http.put(this.UsersUrl + `/${emp.id}`, emp);
+  }
+ 
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MustMatch } from 'src/app/_helpers/must-match.validator';
+import { FormBuilder, FormGroup} from '@angular/forms'
 import { User } from '../classes/user';
 import {UserService} from '../services/user.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-ajout-livreur',
   templateUrl: './ajout-livreur.component.html',
@@ -16,72 +16,80 @@ export class AjoutLivreurComponent implements OnInit {
   email: string;
   password: string;
   confirmPassword: string;
-  ajoutForm: FormGroup;
+  myForm: FormGroup;
   ReactiveFormModul
   submitted = false;
   user:User;
   users:User[];
-  constructor(private formBuilder: FormBuilder ,private userService:UserService) { }
+  exist:boolean;
+  list=[] as any ;
+  nameUser = localStorage.getItem('name')
+  admin:string;
+  liv:string;
+  n:string;
+  p:string;
+  constructor(private router: Router ,private formBuilder: FormBuilder ,private userService:UserService) { }
 
   
   ngOnInit() {
-    this.ajoutForm = this.formBuilder.group({
-      phone: ['', Validators.required],
-      city: ['', Validators.required],
-      country: ['', Validators.required],
-      address: ['', Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
-      acceptTerms: [false, Validators.requiredTrue]
-  }, {
-      validator: MustMatch('password', 'confirmPassword')
-  });
-
+    this.admin = localStorage.getItem("admin");
+    this.liv = localStorage.getItem("liv");
+    this.n=JSON.parse(localStorage.getItem('nom'));
+    this.p=JSON.parse(localStorage.getItem('prenom'));
+    this.user=new User();
+    this.user.zone="hhhh";
+    this.user.grade="livreur"
+    this.userService.getUsers().subscribe((res) => {
+      this.list = res;
+    });
   }
-  get f() { return this.ajoutForm.controls; }
+  
 
   onSubmit() {
-    this.submitted = true;
+    this.exist=false;
+    
+      this.submitted = true;
 
-    // stop here if form is invalid
-    if (this.ajoutForm.invalid) {
-        return;
-    }else {
-      this.user.nom=this.lastName;
-      this.user.prenom=this.firstName;
-      this.user.adresse=this.address;
+      // stop here if form is invalid
       
-      this.user.telephone=this.phone;
-      this.user.email=this.email;
-      this.user.mdp=this.password;
-      this.user.zone="undefined";
-      this.user.grade="user";
+      
+        this.user.zone="hhh";
+        this.user.grade="livreur";
+        for(let us of this.list){
+        if(this.user.email==us.email){
+          alert("email address email exist");
+           this.exist=true;
+          }
+        }
+        if(this.exist===false){
 this.userService.create(this.user as User).subscribe(user=>{this.users.push(user)});
 alert("ajouter avec succés");
-      this.firstName = '';
-      this.lastName = '';
-      this.email = '';
-  
-      this.address = '';
-      this.phone = '';
-      this.password = '';
-      this.confirmPassword = '';
-      //alert('SUCCESS!!');
-    console.log(this.ajoutForm.value);
+        
+        alert('SUCCESS!!');
+     
 
 
 
-  //  window.location.replace("login");
-    }
-
+     //window.location.replace("login");
+     
+   
+      
+}
 }
 
 onReset() {
   this.submitted = false;
-  this.ajoutForm.reset();
+  this.myForm.reset();
 }
-   
+c() {
+  if(localStorage.getItem('name') === '') {
+    return false;
+  } else {
+    return true;
+  }
+}
+logout() {
+  window.location.replace("login");
+  localStorage.setItem("name","")
+}  
 }

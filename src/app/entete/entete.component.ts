@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EnteteComponent implements OnInit {
   nameUser = localStorage.getItem('name')
+admin:string;
+liv:string;
+n:string;
+p:string;
   constructor() { }
 
   ngOnInit() {
+    this.admin = localStorage.getItem("admin");
+    this.liv = localStorage.getItem("liv");
+    this.n=JSON.parse(localStorage.getItem('nom'));
+    this.p=JSON.parse(localStorage.getItem('prenom'));
   }
   c() {
     if(localStorage.getItem('name') === '') {

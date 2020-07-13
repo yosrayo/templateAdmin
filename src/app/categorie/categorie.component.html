@@ -1,109 +1,369 @@
 
+<div id="wrapper" style="background-color: #e7ab3c;">
+  
+  <ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar" >
 
-<h3 class="text-center" style="margin-top: 20px;"> Supprimer/modifier Catégorie</h3>
-
-<section class="shopping-cart spad">
-  <div class="container">
-      <div class="row">
-          <div class="col-lg-12">
-              <div class="cart-table">
-                  <table>
-                      <thead>
-                          <tr>
-                              <th>id</th>
-                              <th>Nom categorie</th>
-                              <th>Gerer</th>
-                              
-                          </tr>
-                      </thead>
-                      <tbody>
-                         
-                          <tr *ngFor="let m of list">
-                               <th>{{m.id}}</th>
-                              <th >{{m.nom_categorie}}</th>
-                            
-                                <th> 
-                                    <a class="action-btn" (click)="onDelete(m.id)"  >
-                                        <i class="fas fa-trash-alt"  ></i>
-                                     </a> 
-                                     <a class="action-btn" (click)="onEdit(m)" style="margin-left: 20px;">
-                                        <i class="fas fa-wrench" ></i>
-                                    </a>  
-                                
-                                </th> 
-                            </tr>
-                         
-                      </tbody>
-                  </table>
-                  
-              </div>
-           
-          </div>
-         
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html" >
+      <div class="sidebar-brand-icon ">
+          <img src="assets\img\p.jpg" alt="" style="height: 25px; width: 180px;">
       </div>
-  </div>
-</section>
-<section class="shopping-cart spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="cart-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nom categorie</th>
-                                <th class="qua-col">
-                                    <div class="quantity">
-                                        <div class="pro-qty">
-                                            <input type="text"   [(ngModel)]="nom_categorie" name="nom_categorie" style=" border-radius: 10px; height: 32px;">
-                                            <a   class="btn btn-success"  style=" border-radius: 10px; height: 35px;" (click)="ajout()" > 
-                                               Modifier
-                                             </a>
-                                        </div>
-                                    </div>
-                                </th>
-                               
-                            </tr>
-                        </thead>
-                    </table>
-                    
-                </div>
-             
-            </div>
-            
-        </div>
-    </div>
-  </section>
-<h3 class="text-center" style="margin-top: 20px;"> Ajouter Catégorie</h3>
-<section class="shopping-cart spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="cart-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nom categorie</th>
-                                <th class="qua-col">
-                                    <div class="quantity">
-                                        <div class="pro-qty">
-                                            <input type="text"   [(ngModel)]="quantite" style=" border-radius: 10px; height: 32px;">
-                                            <a   class="btn btn-success"  style=" border-radius: 10px; height: 35px;" > 
-                                               Ajouter
-                                             </a>
-                                        </div>
-                                    </div>
-                                </th>
-                               
-                            </tr>
-                        </thead>
-                    </table>
-                    
-                </div>
-             
-            </div>
-            
-        </div>
-    </div>
-  </section>
+      
+    </a>
 
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0" style="background-color: white">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active" >
+      <a class="nav-link " >
+          <i class="fas fa-laugh-wink"></i>
+        <span>{{n}} {{p}}</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" style="background-color: white;">
+
+    <!-- Heading -->
+    <div class="sidebar-heading" >
+      Interface
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item" >
+  
+      <a class="nav-link " [routerLink]="['/message']" routerLinkActive="router-link-active" >
+        <i class="fas fa-envelope"></i>
+        <span>Message</span>
+      </a>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item" *ngIf="admin == 'admin'">
+      <a class="nav-link " [routerLink]="['/charts']" routerLinkActive="router-link-active"  >
+        <i class="fas fa-fw fa-wrench"></i>
+        <span>Utilities</span>
+      </a>
+     
+    </li>
+
+  
+    <hr class="sidebar-divider" style="background-color: white">
+
+
+    <div class="sidebar-heading" >
+      Addons
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item" >
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Pages</span>
+      </a>
+      <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" >
+        <div class="bg-white py-2 collapse-inner rounded" >
+          <h6 class="collapse-header"*ngIf="admin == 'admin'">Pages Admin:</h6>
+          <a class="collapse-item" *ngIf="admin == 'admin'" [routerLink]="['/commande']" routerLinkActive="router-link-active"  >List de commandes</a>
+          <a class="collapse-item" *ngIf="admin == 'admin'" [routerLink]="['/ajoutproduit']" routerLinkActive="router-link-active"  >Ajout produit</a>
+          <a class="collapse-item" *ngIf="admin == 'admin'"  [routerLink]="['/supprimerproduit']" routerLinkActive="router-link-active"  >Supprimer/modifier produit</a>
+          <a class="collapse-item" *ngIf="admin == 'admin'" [routerLink]="['/ajoutsupcategorie']" routerLinkActive="router-link-active" >Gerer categorie</a>
+          <a class="collapse-item" *ngIf="admin == 'admin'" [routerLink]="['/ajoutLivreur']" routerLinkActive="router-link-active" >ajouter livreurs</a>
+          <a class="collapse-item" *ngIf="admin == 'admin'" [routerLink]="['/supLiv']" routerLinkActive="router-link-active" >supprimer livreur</a>
+          <a class="collapse-item" *ngIf="admin == 'admin'" [routerLink]="['/supClient']" routerLinkActive="router-link-active" >supprimer Client</a>
+          <a class="collapse-item" *ngIf="admin == 'admin'" [routerLink]="['/accueil']" routerLinkActive="router-link-active" >GPS</a>
+          <div class="collapse-divider" ></div>
+          <h6 class="collapse-header" *ngIf="liv == 'liv'">Pages livreurs:</h6>
+          <a class="collapse-item" *ngIf="liv == 'liv'"  [routerLink]="['/modifierProfil']" routerLinkActive="router-link-active"  >modifier profil</a>
+          <a class="collapse-item" *ngIf="liv == 'liv'" [routerLink]="['/livCommande']" routerLinkActive="router-link-active" >livraison</a>
+        </div>
+      </div>
+    </li>
+
+    <!-- Nav Item - Tables -->
+   
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block" style="background-color: white;">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline" >
+      <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+  </ul>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn" type="button" style="background-color: #e7ab3c;" >
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-warning" type="button" >
+                        <i class="fas fa-search fa-sm" ></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            <!-- Nav Item - Alerts -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge  badge-counter" style="background-color: orangered;">3+</span>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Alerts Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                      <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 12, 2019</div>
+                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-success">
+                      <i class="fas fa-donate text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 7, 2019</div>
+                    $290.29 has been deposited into your account!
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 2, 2019</div>
+                    Spending Alert: We've noticed unusually high spending for your account.
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+              </div>
+            </li>
+
+            <!-- Nav Item - Messages -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle"  id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-envelope fa-fw"></i>
+                <!-- Counter - Messages -->
+                <span class="badge  badge-counter" style="background-color: orangered;">7</span> <!--incrimentation de basede donnee-->
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                <h6 class="dropdown-header">
+                  Message Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" >
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                    <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div class="font-weight-bold" [routerLink]="['/message']" routerLinkActive="router-link-active" >
+                    <div class="text-truncate" [routerLink]="['/message']" routerLinkActive="router-link-active" >Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                    <div class="small text-gray-500">Emily Fowler · 58m</div>
+                  </div>
+                </a>
+              
+                <a class="dropdown-item text-center small text-gray-500" [routerLink]="['/messsage']" routerLinkActive="router-link-active" >Read More Messages</a>
+              </div>
+            </li>
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small" *ngIf="c()">{{n}} {{p}}</span>
+                <img class="img-profile rounded-circle" src="assets\img\admin.jpg">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#" [routerLink]="['/modifierProfil']" routerLinkActive="router-link-active" >
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profil
+                </a>
+            
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal" (click)="logout()">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"  ></i>
+                 Déconnexion
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+       
+      
+       
+             
+        <div class="container" >
+          <h3 class="text-center"><i class="far fa-edit"></i><u>Gérer Catégorie</u></h3>
+          <div class="messaging">
+                <div class="inbox_msg">
+                  <div class="inbox_people">
+                    <div class="headind_srch" style="background-color: white;">
+                      <div class="recent_heading" >
+                        <h4  style="color: #e7ab3c">Modifier catégorie</h4>
+                      </div>
+                    
+                    </div>
+                   
+                    <div class="inbox_chat" style="background-color: white;">
+                      <div class="container" >
+  
+                        <form  class="form-group ">
+                            
+                            <div class="form-group">
+                              <label for="exampleInputEmail1" ><b>Nom catégorie</b></label>
+                              <input type="text" class="form-control" id="exampleInputEmail1" 
+                                name="nom_produit" [(ngModel)]="nom_produit" >
+            
+                            </div>
+                          
+                          
+                            <div class="text-center">
+                              <button type="button" class="btn btn-warning" style="margin-right: 20px;  width: 150px;">Annuler</button>
+            
+                             <button type="button" class="btn btn-success" style=" width: 150px;">Valider</button>
+            
+                           
+                            </div>
+                          </form>
+                      </div>
+                      <hr>
+                      <div class="headind_srch" style="background-color: white;">
+                        <div class="recent_heading" >
+                          <h4  style="color: #e7ab3c">Ajouter catégorie</h4>
+                        </div>
+                        
+                        <div class="container" >
+  
+                            <form  class="form-group ">
+                                
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1" ><b>Nom catégorie</b></label>
+                                  <input type="text" class="form-control" id="exampleInputEmail1" 
+                                    name="nom_produit" [(ngModel)]="nom_produit" >
+                
+                                </div>
+                              
+                              
+                                <div class="text-center">
+                                  <button type="button" class="btn btn-warning" style="margin-right: 20px;  width: 150px;">Annuler</button>
+                
+                                 <button type="button" class="btn btn-success" style=" width: 150px;">Valider</button>
+                
+                               
+                                </div>
+                              </form>
+                          </div>
+                    </div>
+                    
+                      
+                      </div>
+                  </div>
+                  <div class="mesgs" style="background-color: white" >
+                      <h3 style="color: #e7ab3c" class="text-center">Liste de catégories</h3>
+                    <div class="msg_history">
+                      
+                      
+                          <div  >
+                              
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col" style="color: darkgoldenrod;">ID</th>
+                                    <th scope="col" style="color: darkgoldenrod;">Nom catégorie</th>
+                                    <th scope="col" style="color: darkgoldenrod;">Edite</th>
+                       
+                          
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let m of list" >
+                                    <th>{{m.id}}</th>
+                                    <th>{{m.nom_categorie}}</th>
+                                    <th>
+                                      <a class="action-btn" (click)="onDelete(m.id)">
+                                          <i class="fas fa-trash-alt" style="margin-right: 20px; color: rgb(184, 35, 35);" ></i>
+                                      </a>
+                                      <a class="action-btn" (click)="onEdit(m)">
+                                          <i class="fas fa-wrench" style="color: chocolate;"></i>
+                                      </a>
+                                      
+                                    </th>
+                          
+                                  </tr>
+                          
+                                </tbody>
+                              </table>
+                          </div>
+                            
+                      
+                    </div>
+                  </div>
+                </div>
+                
+                
+              </div>
+            </div>
+  
+  
+      
+      
+   
+    
+    
+  
+  

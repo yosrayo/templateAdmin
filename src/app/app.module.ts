@@ -3,25 +3,19 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-
 import { FooterComponent } from './footer/footer.component';
-
 import { EnteteComponent } from './entete/entete.component';
 import { ForgetPassComponent } from './forget-pass/forget-pass.component';
 import { MessageComponent } from './message/message.component';
-import { AdminAccueilComponent } from './admin-accueil/admin-accueil.component';
 import { AgmCoreModule } from '@agm/core';
-
 import { AjoutProduitComponent } from './ajout-produit/ajout-produit.component';
 import { SupprimerProduitComponent } from './supprimer-produit/supprimer-produit.component';
 import { CategorieComponent } from './categorie/categorie.component';
 import { HttpClientModule, HttpClient , HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AjoutLivreurComponent } from './ajout-livreur/ajout-livreur.component';
 import { ModifierProfilLivComponent } from './modifier-profil-liv/modifier-profil-liv.component';
-
 import { CommandeLivComponent } from './commande-liv/commande-liv.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { SupLivreurComponent } from './sup-livreur/sup-livreur.component';
@@ -29,37 +23,37 @@ import { SupClientComponent } from './sup-client/sup-client.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AuthoService } from './services/autho.service';
 import { EventService } from './services/event.service';
-import { AuthGuard } from './autho.guard';
+import { ChartsComponent } from './charts/charts.component';
+import { ChartsModule } from 'ng2-charts';
+import { CommandeAdminComponent } from './commande-admin/commande-admin.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    
     RegisterComponent,
     LoginComponent,
-   
     FooterComponent,
-  
     EnteteComponent,
     ForgetPassComponent,
     MessageComponent,
-    AdminAccueilComponent,
-   
     AjoutProduitComponent,
     SupprimerProduitComponent,
     CategorieComponent,
     AjoutLivreurComponent,
     ModifierProfilLivComponent,
-    
     CommandeLivComponent,
     AccueilComponent,
     SupLivreurComponent,
     SupClientComponent,
+    ChartsComponent,
+    CommandeAdminComponent,
+   
   
   ],
   imports: [
     BrowserModule,
+    ChartsModule,
     AppRoutingModule ,
     HttpClientModule,
     FormsModule, ReactiveFormsModule ,
@@ -71,7 +65,7 @@ import { AuthGuard } from './autho.guard';
     
   
   ],
-  providers: [AuthoService, AuthGuard, EventService, 
+  providers: [AuthoService, EventService, 
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

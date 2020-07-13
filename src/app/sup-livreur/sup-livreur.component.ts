@@ -9,14 +9,26 @@ import { User } from '../classes/user';
 export class SupLivreurComponent implements OnInit {
   list = [] as any ;
   user:User;
+  admin:string;
+liv:string;
+n:string;
+p:string;
+h: any;
+grade:String="livreur";
   constructor(private userService : UserService ) { }
 
   ngOnInit() {
-   
-    this.userService .getUsers().subscribe((res) => {
-      this.list = res;
-    });
-    
+    this.grade="livreur";
+    this.admin = localStorage.getItem("admin");
+    this.liv = localStorage.getItem("liv");
+    this.n=JSON.parse(localStorage.getItem('nom'));
+    this.p=JSON.parse(localStorage.getItem('prenom'));
+
+      this.userService .getUserGrade(this.grade).subscribe((res) => {
+        this.list = res;
+      
+      });
+      
   }
   delete(user:User): void {
     this.userService.delete(user).subscribe();
@@ -31,5 +43,15 @@ export class SupLivreurComponent implements OnInit {
       });
     }
   }
-  
+  c() {
+    if(localStorage.getItem('name') === '') {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  logout() {
+    window.location.replace("login");
+    localStorage.setItem("name","")
+  }
 }

@@ -20,9 +20,19 @@ export class AjoutProduitComponent implements OnInit {
   produits:Produit[];
   submitted = false;
   ReactiveFormModul
+  nameUser = localStorage.getItem('name')
+  admin:string;
+  liv:string;
+  n:string;
+  p:string;
+  imagePreview: string | ArrayBuffer;
   constructor(private formBuilder: FormBuilder, private produitService:ProduitService , private httpClient: HttpClient){ }
 
   ngOnInit() {
+    this.admin = localStorage.getItem("admin");
+    this.liv = localStorage.getItem("liv");
+    this.n=JSON.parse(localStorage.getItem('nom'));
+    this.p=JSON.parse(localStorage.getItem('prenom'));
     this.produit=new Produit();
     this.ajoutForm = this.formBuilder.group({
       nom: ['', Validators.required],
@@ -37,6 +47,7 @@ export class AjoutProduitComponent implements OnInit {
 
   
   get f() { return this.ajoutForm.controls; }
+  
   onSubmit() {
     this.submitted = true;
 
@@ -61,6 +72,34 @@ alert("ajouter avec succés");
      
       alert('SUCCESS!!');
     console.log(this.ajoutForm.value);
-    window.location.replace("accueilAdmin");
+    //window.location.replace("accueilAdmin");
     }
-  }}
+  }
+  c() {
+    if(localStorage.getItem('name') === '') {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  logout() {
+    window.location.replace("login");
+    localStorage.setItem("name","")
+  }
+
+  selectImage(event: Event) {
+
+    const file = (event.target as HTMLInputElement).files[0];
+    console.log(file);
+    const reader = new FileReader();
+    reader.onload = () => {
+    this.imagePreview = reader.result;
+    console.log('ima', this.imagePreview);
+    };
+    reader.readAsDataURL(file);
+    
+    
+    }
+    
+
+}
