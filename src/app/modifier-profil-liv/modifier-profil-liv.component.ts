@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from 'src/app/_helpers/must-match.validator';
 import { UserService } from '../services/user.service';
+
 @Component({
   selector: 'app-modifier-profil-liv',
   templateUrl: './modifier-profil-liv.component.html',
@@ -24,7 +25,8 @@ export class ModifierProfilLivComponent implements OnInit {
   n:string;
   p:string;
   users = {} as any ;
-  constructor(private formBuilder: FormBuilder, private userService:UserService) { }
+  
+  constructor(private formBuilder: FormBuilder, private userService:UserService ) { }
 
   ngOnInit() {
     //get informations de livreur
@@ -66,7 +68,7 @@ export class ModifierProfilLivComponent implements OnInit {
       this.users.email=this.email;
       this.users.mdp=this.password ;
       this.users.mdp=this.confirmPassword;
-        this.submitted = true;
+        this.submitted = true
         this.userService.updateUser(this.users).subscribe();
         alert('SUCCESS!!');
         localStorage.setItem("user", JSON.stringify(this.users));
@@ -86,7 +88,7 @@ export class ModifierProfilLivComponent implements OnInit {
          
         console.log(this.modifierForm.value);
         
-       // }
+       
     
     }
 
@@ -110,7 +112,7 @@ export class ModifierProfilLivComponent implements OnInit {
     }
     logout() {
       window.location.replace("login");
-      localStorage.setItem("name","")
+      localStorage.setItem("name","");
+      localStorage.removeItem("grade");
     }
-    
-}
+   }

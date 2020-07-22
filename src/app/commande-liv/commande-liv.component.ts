@@ -29,14 +29,18 @@ d:number;
   constructor(private userService:UserService, private commandeService : CommandeService ) { }
 
   ngOnInit() {
- this.userService.getUsers().subscribe((res) => {
-      this.l = res;
-  });
+    this.userService.getUsers().subscribe((res) => {
+          this.l = res;
+          //this.region = "mahdia"
+      });
    
 
     this.commandeService.getCommandes().subscribe((res) => {
       this.list = res;
       console.log("listCommande",this.list);
+      for(let i=0 ; i < this.list.length; i++){
+        this.reg(this.list[i].id_user)
+      }
       
     });
     //navbar 
@@ -58,7 +62,8 @@ d:number;
   //logout 
   logout() {
     window.location.replace("login");
-    localStorage.setItem("name","")
+    localStorage.setItem("name","");
+    localStorage.removeItem("grade");
   }
 
   //select etat..
@@ -71,15 +76,17 @@ d:number;
     
   }
   
-  reg(id:number){
-    for(let i=0 ; i>this.list.length;i++){
+  reg(id:number) {
+    
     
     for(let us of this.l ){
-    if(us.id==id)
-    this.region=us.adresse;
-   
-  }
-  }
+    if(us.id == id) {
+    this.region = us.adresse;
+    
+    console.log(this.region);
+    }
+  
+}
   }
 
  

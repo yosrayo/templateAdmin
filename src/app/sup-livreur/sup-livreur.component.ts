@@ -52,6 +52,7 @@ grade:String="livreur";
   }
   logout() {
     window.location.replace("login");
-    localStorage.setItem("name","")
+    localStorage.setItem("name","");
+    localStorage.removeItem("grade");
   }
 }

@@ -26,7 +26,16 @@ import { EventService } from './services/event.service';
 import { ChartsComponent } from './charts/charts.component';
 import { ChartsModule } from 'ng2-charts';
 import { CommandeAdminComponent } from './commande-admin/commande-admin.component';
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import {
+  AngularFireStorageModule,
+  AngularFireStorageReference,
+  AngularFireUploadTask,
+  //StorageBucket
+} from "@angular/fire/storage";
 
 @NgModule({
   declarations: [
@@ -55,6 +64,12 @@ import { CommandeAdminComponent } from './commande-admin/commande-admin.componen
     BrowserModule,
     ChartsModule,
     AppRoutingModule ,
+    AngularFireStorageModule,
+
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
     HttpClientModule,
     FormsModule, ReactiveFormsModule ,
     AgmCoreModule.forRoot({

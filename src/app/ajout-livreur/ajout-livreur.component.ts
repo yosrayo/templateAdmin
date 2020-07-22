@@ -53,7 +53,7 @@ export class AjoutLivreurComponent implements OnInit {
       // stop here if form is invalid
       
       
-        this.user.zone="hhh";
+        this.user.zone="undefid";
         this.user.grade="livreur";
         for(let us of this.list){
         if(this.user.email==us.email){

@@ -21,10 +21,15 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   user = [] as any;
   users:User[];
+  exist: boolean;
+  list: User[];
   constructor(private formBuilder: FormBuilder , private userService:UserService) { }
 
   ngOnInit() {
     this.user=new User();
+    this.userService.getUsers().subscribe((res) => {
+      this.list = res;
+    });
     this.registerForm = this.formBuilder.group({
       phone: ['', Validators.required],
   
@@ -44,7 +49,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
+    this.exist=false;
     // stop here if form is invalid
     //if (this.registerForm.invalid) {
         //return;
@@ -60,6 +65,14 @@ export class RegisterComponent implements OnInit {
       this.user.mdp=this.password;
       this.user.zone="undefined";
       this.user.grade="admin";
+      for(let us of this.list){
+        if(this.user.email==us.email){
+          alert("email address email exist");
+           this.exist=true;
+          }
+        }
+        if(this.exist===false){
+          
 this.userService.create(this.user as User).subscribe(user=>{this.users.push(user)});
 alert("ajouter avec succés");
      /* this.firstName = '';
@@ -79,7 +92,7 @@ console.log('user',this.user)
 
 }
 //}
-
+  }
 
 
    

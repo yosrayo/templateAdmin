@@ -279,11 +279,12 @@
                          
                           <tr *ngFor="let m of list">
                               
-                              <th class="cart-pic" [(ngModel)]="id"> {{m.id}}</th>
-                              <th [(ngModel)]="quantite"> {{m.quantite}}</th>
-                              <th [(ngModel)]="date"> {{m.date | date:'shortDate'}}  </th>
+                              <th class="cart-pic" > {{m.id}}</th>
+                              <th > {{m.quantite}}</th>
+                              <th > {{m.date | date:'shortDate'}}  </th>
                             
-                              <th >{{reg(m.id_user)}}</th>
+                              <th >{{region}}</th>
+                              
                               <th>
                                 <div class="btn-group">
                                   <select type="button" (change)="selectChangeHandler($event , m)" [(ngModel)]="m.etat" value="selectedEtat"  style="background-color: #e7ab3c; border-radius: 20px; border-color: white; height: 40px; width: 150px;" >

@@ -275,7 +275,6 @@
                           <div class="form-group">
                             
                             <select class="form-control  form-control-user" placeholder="Catégorie" formControlName="categorie" [(ngModel)]="categorie"  [ngClass]="{ 'is-invalid': submitted && f.categorie.errors }" style="border-radius: 20px; height: 50px;">
-                                <option value=""></option>
                                 <option value="Vetements">Vetements</option>
                                 <option value="Bébés">Bébés</option>
                                 <option value="Beauté">Beauté</option>
@@ -296,7 +295,7 @@
                           </div>
                           <div class="form-group">
                             
-                            <input type="file" name="image" (change)="selectImage($event)"[(ngModel)]="photo" formControlName="photo"  [ngClass]="{ 'is-invalid': submitted && f.photo.errors }" />
+                            <input type="file" c formControlName="photo"  [ngClass]="{ 'is-invalid': submitted && f.photo.errors }" />
                             <div *ngIf="submitted && f.photo.errors" class="invalid-feedback">
                               <div *ngIf="f.qt.errors.required">photo obligatoire</div>
                               

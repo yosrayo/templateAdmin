@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Produit } from '../classes/produit';
 import {ProduitService} from '../services/produit.service'
-
+import { AngularFireStorage } from '@angular/fire/storage';
+import { map, finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-supprimer-produit',
   templateUrl: './supprimer-produit.component.html',
@@ -21,8 +23,11 @@ export class SupprimerProduitComponent implements OnInit {
  n:string;
  p:string;
  h:Produit;
-  imagePreview: string | ArrayBuffer;
-  constructor(private produitService:ProduitService) { }
+ imagePreview: string | ArrayBuffer;
+ exist: boolean;
+ fb = '';
+ downloadURL: Observable<string>;
+  constructor(private produitService:ProduitService ,private storage: AngularFireStorage) { }
 
   ngOnInit() {
     this.produitService .getProduits().subscribe((res) => {
@@ -57,7 +62,7 @@ export class SupprimerProduitComponent implements OnInit {
     console.log("idP",this.h.id)
     
     this.h.nom_produit = this.nom_produit; 
-    this.h.photo = this.photo;  
+    this.h.photo = this.fb;  
     this.h.quantite = this.quantite;
     this.h.prix = this.prix;
     this.produitService.updateproduit(this.h).subscribe((res) => {
@@ -73,19 +78,32 @@ annuler(){
     this.prix = null;
 }
   
-  selectImage(event: Event) {
+onFileSelected(event) {
+  var n = Date.now();
+  const file = event.target.files[0];
+  const filePath = `Produits/${n}`;
+  const fileRef = this.storage.ref(filePath);
+  const task = this.storage.upload(`Produits/${n}`, file);
+  task
+    .snapshotChanges()
+    .pipe(
+      finalize(() => {
+        this.downloadURL = fileRef.getDownloadURL();
+        this.downloadURL.subscribe((url) => {
+          if (url) {
+            this.fb = url;
+          }
+          console.log(this.fb);
+        });
+      })
+    )
+    .subscribe((url) => {
+      if (url) {
+        console.log(url);
+      }
+    });
+}
 
-    const file = (event.target as HTMLInputElement).files[0];
-    console.log(file);
-    const reader = new FileReader();
-    reader.onload = () => {
-    this.imagePreview = reader.result;
-    console.log('ima', this.imagePreview);
-    };
-    reader.readAsDataURL(file);
-    
-    
-    }
     
  //logout
   c() {
@@ -97,7 +115,8 @@ annuler(){
   }
   logout() {
     window.location.replace("login");
-    localStorage.setItem("name","")
+    localStorage.setItem("name","");
+    localStorage.removeItem("grade");
   }
  
  

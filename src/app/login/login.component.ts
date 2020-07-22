@@ -67,13 +67,15 @@ localStorage.setItem("name","user");
     if(!this.b)
     {
       alert("compte non reconnu!");
+      window.location.replace("login")
     }
  
     if(JSON.parse(localStorage.getItem('grade'))=='livreur')
     {
       localStorage.removeItem("admin")
    window.location.replace("livCommande") 
-  
+
+
   }else{
     if(JSON.parse(localStorage.getItem('grade'))=='admin'){
       localStorage.removeItem("liv");

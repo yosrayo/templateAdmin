@@ -14,7 +14,7 @@ export class SupClientComponent implements OnInit {
   liv:string;
   n:string;
   p:string;
-  grade:String="client";
+  grade:String="user";
   constructor( private userService : UserService) { }
 
   ngOnInit() {
@@ -25,7 +25,7 @@ export class SupClientComponent implements OnInit {
     this.p=JSON.parse(localStorage.getItem('prenom'));
 
 
-    this.grade="client";
+    this.grade="user";
     
     this.userService .getUserGrade(this.grade).subscribe((res) => {
       this.list = res;
@@ -49,6 +49,7 @@ export class SupClientComponent implements OnInit {
   }
   logout() {
     window.location.replace("login");
-    localStorage.setItem("name","")
+    localStorage.setItem("name","");
+    localStorage.removeItem("grade");
   }
 }
